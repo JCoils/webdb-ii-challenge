@@ -30,7 +30,7 @@ router.get("/:id", (req, res) => {
         if (zoo) {
           res.status(200).json(zoo);
         } else {
-          res.status(404).json({ message: "no such id exists" });
+          res.status(404).json({ message: "push" });
         }
       })
       .catch(err => {
@@ -40,7 +40,7 @@ router.get("/:id", (req, res) => {
 
   router.post("/", (req, res) => {
     if (!req.body.name) {
-      res.status(400).json({ msg: "please provide a name" });
+      res.status(400).json({ msg: "push" });
     } else {
       db("zoos")
         .insert(req.body, "id")
@@ -71,7 +71,7 @@ router.get("/:id", (req, res) => {
             message: `${count} ${count > 1 ? "records" : "record"} deleted`
           });
         } else {
-          res.status(400).json({ message: "no such id exists" });
+          res.status(400).json({ message: "push" });
         }
       })
       .catch(err => {
@@ -89,7 +89,7 @@ router.get("/:id", (req, res) => {
             message: `${count} ${count > 1 ? "records" : "record"} updated`
           });
         } else {
-          res.status(400).json({ message: "this zoo does not exist" });
+          res.status(400).json({ message: "push" });
         }
       })
       .catch(err => {
