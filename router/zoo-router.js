@@ -50,3 +50,21 @@ router.get("/:id", (req, res) => {
         });
     }
   });
+  
+  router.delete("/:id", (req, res) => {
+    db("zoos")
+      .where({ id: req.params.id })
+      .del()
+      .then(count => {
+        if (count > 0) {
+          res.status(200).json({
+            message: `${count} ${count > 1 ? "records" : "record"} deleted`
+          });
+        } else {
+          res.status(400).json({ message: "no such id exists" });
+        }
+      })
+      .catch(err => {
+        res.status(500).json(err);
+      });
+  });
